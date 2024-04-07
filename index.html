@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Name and Current Time</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        text-align: center;
+    }
+    input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+    }
+    #time {
+        font-size: 24px;
+        margin-top: 20px;
+    }
+    input[type="submit"] {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    input[type="submit"]:hover, input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Hello, what's your name?</h1>
+    <form id="nameForm">
+        <input type="text" name="input_name" id="input_name" placeholder="Enter your name">
+        <br>
+        <h1>What time is on Your Area</h1>
+        <input type="number" id="hourInput" placeholder="Hour (0-23)" min="0" max="23">
+        <input type="number" id="minuteInput" placeholder="Minute (0-59)" min="0" max="59">
+        <input type="number" id="secondInput" placeholder="Second (0-59)" min="0" max="59">
+        <br>
+        <input type="submit" id="submitBtn" value="Submit">
+    </form>
+    <div id="time"></div>
+</div>
+
+<script>
+    document.getElementById("nameForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var name = document.getElementById('input_name').value; // Corrected ID here
+        var hour = document.getElementById('hourInput').value;
+        var minute = document.getElementById('minuteInput').value;
+        var second = document.getElementById('secondInput').value;
+        var localTime = hour + ":" + minute + ":" + second;
+
+        // Redirect to clock.html
+        window.location.href = "clock.html";
+    });
+
+    function updateTime() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+        var timeString = hours.toString().padStart(2, '0') + ':' +
+                         minutes.toString().padStart(2, '0') + ':' +
+                         seconds.toString().padStart(2, '0');
+        document.getElementById('time').textContent = "Current Nepal's time: " + timeString;
+        setTimeout(updateTime, 1000); // Update time every second
+    }
+    updateTime(); // Start the update process
+
+
+    
+ 
+</script>
+
+</body>
+</html>

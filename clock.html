@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="function.js"></script>
+</head>
+<body style="background-color: black;">
+    <div id="creatorInfo" style=" color: rgb(177, 29, 29);; text-align: center; padding: 10px;"> <h2> Creator: Ayush Lohani</h2>
+        <i> (Time According to your device data)</i> </div>
+    <br>
+    <div id="clockContainer">
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+
+    <script>
+      const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const playerName = urlParams.get('input_name');
+
+        // Display player's name on the page
+        if (playerName) {
+            document.getElementById('player-name').textContent = `Player name: ${playerName}`;
+        }
+
+    </script>
+    
+
+</body>
+</html>
